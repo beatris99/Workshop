@@ -1,0 +1,46 @@
+<p>Note content is:  {{noteContent}}</p>
+<p [ngStyle]="{'color':textColor}" [ngStyle]="{'font-size':sizeTitle}">This is {{title | uppercase }}</p>
+<!-- <p>Date is: {{currentDate | date : 'longDate'}}</p> -->
+<mat-form-field>
+    <input matInput placeholder="Change Background" [(ngModel)]="noteContentBground">
+
+</mat-form-field>
+
+<br>
+<mat-form-field>
+    <input matInput placeholder="Add Note" [(ngModel)]="noteContent">
+</mat-form-field>
+<br>
+<mat-form-field>
+    <input matInput placeholder="Add title size" [(ngModel)]="sizeTitle">
+</mat-form-field>
+<p>Number is: {{2|addPipe:4}}</p> 
+<p>Default pipes and structural directives:</p> 
+<p>Make string uppercase:  {{title | uppercase }}</p>
+<p>List of strings: </p>
+<div >
+    <ul>
+    <li *ngFor="let item of items; let i=index; let even=even;">
+    <p *ngIf="even">
+        {{item.name | uppercase}}
+    </p> 
+ </li>
+</ul>
+</div>
+<p>List of date: </p>
+<div >
+    <ul>
+    <li *ngFor="let items of currentDate">
+        {{items | date : 'longDate'}}
+    </li>
+</ul>
+</div>
+<p>Sum is: {{2 | addPipe:4}}</p> 
+
+
+
+ 
+<button (click)="buttonClick()">Set Color</button>
+<button (click)="setTheme()">Set Background</button>
+ 
+

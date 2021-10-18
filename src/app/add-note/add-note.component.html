@@ -1,0 +1,19 @@
+<div class="add-note">
+
+    <h1 class="page-title">Add a note</h1>
+  
+    <form class="add-note-form" autocomplete="off">
+      <mat-form-field class="note-title">
+        <input matInput name="inputNote" placeholder="Note title" required minlength="4" [(ngModel)]="title" #name="ngModel">
+      </mat-form-field>
+  
+      <mat-form-field class="note-description">
+        <textarea matInput name="inputNote" placeholder="Note description" [(ngModel)]="description"></textarea>
+      </mat-form-field>
+    
+    </form>
+  
+    <button class="add-note-button" mat-raised-button color="basic" (click)="add()">Add</button>
+  
+  </div>
+  
