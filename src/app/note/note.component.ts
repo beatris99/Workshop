@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NoteService as NoteService } from '../services/note.service';
 import { Note } from './note';
 
 @Component({
@@ -9,26 +9,41 @@ import { Note } from './note';
 })
 export class NoteComponent implements OnInit {
 
-  notes: Note[] = [
-    {
-      id: "Id1",
-      title: "First note",
-      description: "This is the description for the first note"
-    },
-    {
-      id: "Id2",
-      title: "Second note",
-      description: "This is the description for the second note"
-    }
-  ];
+  notes: Note[] = [];
+  searchedNote: Note[];
 
-  constructor( private router: Router) { }
+  constructor ( private noteService: NoteService ) { }
 
   ngOnInit(): void {
+    this.noteService.serviceCall();
+    this.notes = this.noteService.getNotes();
   }
 
   showNote(){
-   // this.router.navigateByURL()
+    
+  }
+  getNotes(){
+    return this.notes;
   }
 
+  deleteNote(id: string) {
+    
+    this.noteService.deleteNote(id);
+  }
+
+  getNoteById() {
+    
+    let id: string = "";
+    this.noteService.getNoteByID(id)
+  }
+
+  getNoteByTitle() {
+   
+    let title: string = "";
+    this.noteService.getNoteByTitle();
+    
+  }
+
+
+  
 }

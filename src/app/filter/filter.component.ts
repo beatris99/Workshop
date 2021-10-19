@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../module/category';
+import { FilterService } from '../services/filter.service';
 
 
 @Component({
@@ -9,17 +10,16 @@ import { Category } from '../module/category';
 })
 export class FilterComponent implements OnInit {
 
-  categories: Category[] = [
-    {name:'To Do', id:'1'},
-    {name:'Done', id:'2'},
-    {name:'Doing', id:'3'}
-    ];
+  categories: Category[];
     
+  constructor(private filterService: FilterService) {}
 
-  
-  constructor() { }
+  ngOnInit() {
+    this.categories = this.filterService.categories;
+  }
 
-  ngOnInit(): void {
+  selectFilter(categoryId: string) {
+    this.categories;
   }
 
 }

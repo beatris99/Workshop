@@ -1,0 +1,9 @@
+  <div *ngFor="let el of note">
+    <tr>
+      <td><input [(ngModel)]="el.title" placeholder="Title"></td>
+    </tr>
+  </div>
+  
+  <mat-form-field *ngFor="let el of note" class="note-title">
+    <input name="inputNote" placeholder="Note title" [(ngModel)]="title">
+  </mat-form-field>

@@ -8,12 +8,17 @@
       </mat-form-field>
   
       <mat-form-field class="note-description">
-        <textarea matInput name="inputNote" placeholder="Note description" [(ngModel)]="description"></textarea>
+        <textarea matInput name="inputNote" placeholder="Note description" required minlegth= "5" [(ngModel)]="description"></textarea>
       </mat-form-field>
     
+      <mat-form-field >
+        <mat-label>Choose a category </mat-label>
+        <mat-select *ngIf="categories" [(ngModel)]="idCategoryNote" name="categ">
+            <mat-option *ngFor="let categ of categories" [value]="categ.id">{{categ.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </form>
   
     <button class="add-note-button" mat-raised-button color="basic" (click)="add()">Add</button>
   
-  </div>
-  
+ 

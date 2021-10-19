@@ -1,7 +1,15 @@
 .note {
-    width: 200px;
-    height: 200px;
+    
     float: left;
-    margin: 20px 10px 20px 10px;
+    margin: 20px 0px 40px 20px;
+    background-color: aquamarine;
   }
-  
+  .note-card {
+    max-width: 250px;
+    min-height: 250px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }

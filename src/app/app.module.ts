@@ -18,6 +18,9 @@ import { AddNoteComponent } from './add-note/add-note.component';
 import { HomeComponent } from './home/home.component';
 import { AppHighlightDirective } from './app-highlight.directive';
 import { NotedetailsComponent } from './notedetails/notedetails.component';
+import { EditNoteComponent } from './edit-note/edit-note.component';
+import { NoteService } from './services/note.service';
+import { FilterService } from './services/filter.service';
 
 
 
@@ -32,6 +35,7 @@ import { NotedetailsComponent } from './notedetails/notedetails.component';
     HomeComponent,
     AppHighlightDirective,
     NotedetailsComponent,
+    EditNoteComponent,
     
    
   
@@ -47,7 +51,7 @@ import { NotedetailsComponent } from './notedetails/notedetails.component';
     FormsModule,
     MatCardModule,
   ],
-  providers: [],
+  providers: [NoteService, FilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

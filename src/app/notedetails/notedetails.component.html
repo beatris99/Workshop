@@ -1,3 +1,8 @@
-<p>notedetails works!</p>
+<div *ngFor ='let note of notes'>
+    <p>Id: </p>
+    <p>Title: </p>
+    <p>Description: </p>
+    <p>Category Id: </p>
+</div>
 <button (click)="toPrevious()">Previous</button>
 <button (click)="toNext()">Next</button>
