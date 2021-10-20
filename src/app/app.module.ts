@@ -21,7 +21,7 @@ import { NotedetailsComponent } from './notedetails/notedetails.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 import { NoteService } from './services/note.service';
 import { FilterService } from './services/filter.service';
-
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -50,6 +50,7 @@ import { FilterService } from './services/filter.service';
     MatIconModule,
     FormsModule,
     MatCardModule,
+    MatSelectModule,
   ],
   providers: [NoteService, FilterService],
   bootstrap: [AppComponent]

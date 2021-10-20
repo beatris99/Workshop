@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  categoryId: string; 
+
   constructor() { }
 
   ngOnInit(): void {
   }
+  receiveCategory(categId: string) {
+    this.categoryId = categId;
+  }
+
 
 }

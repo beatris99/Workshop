@@ -17,7 +17,6 @@ export class AddNoteComponent implements OnInit {
   categories: Category[];
   idCategoryNote: string;
   
-  
   constructor(private filterService: FilterService, private noteService: NoteService, private router: Router) { }
 
   ngOnInit() {

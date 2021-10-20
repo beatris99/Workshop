@@ -9,12 +9,14 @@ export class NoteService {
     {
     id: "Id1",
     title: "First note",
-    description: "This is the description for the first note"
-    },
+    description: "This is the description for the first note",
+    categoryId: "1"
+  },
     {
     id: "Id2",
     title: "Second note",
-    description: "This is the description for the second note"
+    description: "This is the description for the second note",
+    categoryId: "2"
     }
     ];
   constructor() { }
@@ -26,29 +28,41 @@ export class NoteService {
   getNotes() {
     return this.notes;
   }
-  getNoteByID(id:any) {
+  getFiltredNotes(categoryId: string){
+    return this.notes.filter(note => note.categoryId === categoryId);
+  }
+  getNoteById(id: string)
+  {
     console.log(id);
-    
+    return this.notes.filter(note => note.categoryId === id);
+  }
+  getNoteByDescription(description: string) {
+    console.log(description);
+    return this.notes.filter(
+      note =>  note.description == description);
+  
   }
 
-  getNoteByTitle() {
+  getNoteByTitle(title: string) {
     console.log(this.getNoteByTitle);
+    return this.notes.filter(note => note.title === title);
     
   }
   addNote(noteTitle: string, noteDescription: string, noteCategoryId: string) {
-    let note = {
+    let note: Note = {
+      id: "10",
       description: noteDescription,
       title: noteTitle,
       categoryId: noteCategoryId
     }
-    return this.addNote;
+    return this.notes.push(note) ;
   }
   updateNote(note: Note) {
     return this.notes;
   }
 
-  deleteNote(id:string)
+  deleteNote(id: number)
   {
-    return this.deleteNote;
+    return this.notes.splice(id, 1);
   }
 }

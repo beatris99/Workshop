@@ -1,4 +1,5 @@
-<app-filter></app-filter>
+<app-filter (emitSelectedFilter)="receiveCategory($event)"></app-filter> 
 <app-tools> </app-tools>
-<app-note></app-note>
-<app-notedetails></app-notedetails>
+<app-note [selectedCategoryId]="categoryId"></app-note>  
+<!-- <app-notedetails></app-notedetails>
+<app-edit-note></app-edit-note> -->

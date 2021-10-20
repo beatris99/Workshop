@@ -17,4 +17,5 @@ export class FilterService {
   getFilters(): Category[] {
     return this.categories;
   }
+ 
 }

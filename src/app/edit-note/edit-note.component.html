@@ -1,9 +1,23 @@
-  <div *ngFor="let el of note">
-    <tr>
-      <td><input [(ngModel)]="el.title" placeholder="Title"></td>
-    </tr>
-  </div>
+<div *ngFor="let el of note" class="edit-note">
+
+  <h1 class="page-title">Edit a note</h1>
+
+  <form class="edit-note-form">
+    <mat-form-field class="note-title">
+      <input matInput name="inputNote" placeholder="Note title" [(ngModel)]="el.title">
+    </mat-form-field>
+<br>
+    <mat-form-field class="note-description">
+      <textarea matInput name="inputDesc" placeholder="Note description" [(ngModel)]="el.description"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Choose a category </mat-label>
+      <mat-select *ngIf="categories" [(ngModel)]="idCategoryNote" name="categ">
+          <mat-option *ngFor="let categ of categories" [value]="categ.id" [(ngModel)]="el.categoryId">{{categ.name}}</mat-option>
+      </mat-select>
+  </mat-form-field> 
   
-  <mat-form-field *ngFor="let el of note" class="note-title">
-    <input name="inputNote" placeholder="Note title" [(ngModel)]="title">
-  </mat-form-field>
+  </form>
+  <button class="add-note-button" mat-raised-button color="basic" (click)="updateNote(el)">Update</button>
+</div>

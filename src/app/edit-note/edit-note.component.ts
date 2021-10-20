@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../module/category';
 import { Note } from '../note/note';
+import { FilterService } from '../services/filter.service';
 import { NoteService } from '../services/note.service';
 
 @Component({
@@ -20,19 +21,23 @@ export class EditNoteComponent implements OnInit {
   id: string;
   sub: any;
 
-  constructor(private noteService: NoteService, private route: ActivatedRoute, private router:Router) { }
+  constructor(private noteService: NoteService, private route: ActivatedRoute, private filterService:FilterService, private router:Router) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      console.log(this.id);
+      this.noteService.getNoteById(this.id);
+    });
+    this.categories=this.filterService.getFilters();
   }
 
-  
 
-  updateNote(note: Note) {
-    
+  updateNote(note: Note)  {
+    this.noteService.updateNote(note);
         this.noteService.getNotes();
-      
+     
       this.router.navigateByUrl("");
   }
-    
 
 }

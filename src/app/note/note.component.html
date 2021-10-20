@@ -1,4 +1,17 @@
-<div class="note-card">
+<form class="id-note-form">
+  <mat-form-field class="note-id">
+    <input matInput name="searchDescription" placeholder="Search by description" id="searchInput">
+  </mat-form-field>
+  <button><mat-icon (click)="getNoteByDescription()">search</mat-icon></button>
+  </form>
+
+  <form class="title-note-form">
+    <mat-form-field class="note-title">
+      <input matInput name="searchTitle" placeholder="Search by Title" id="searchInputTitle">
+    </mat-form-field>
+    <button><mat-icon (click)="getNoteByTitle()">search</mat-icon></button>
+</form>
+
 <div *ngFor="let note of notes">
     <mat-card class="note">
       <mat-card-header>
@@ -11,6 +24,16 @@
           {{ note.description }}
         </p>
       </mat-card-content>
+      <mat-card-content>
+        <p>
+          {{ note.categoryId }}
+        </p>
+      </mat-card-content>
+      
+     <button><mat-icon>label</mat-icon></button> 
+     <button><mat-icon>verified_user</mat-icon></button> 
+     <button><mat-icon>subdirectory_arrow_right</mat-icon></button> 
+     <button><mat-icon (click)="redirectToEdit(note.id)">edit</mat-icon></button>
+     <button><mat-icon (click)="deleteNote(note.id)">delete</mat-icon></button>
     </mat-card>
-</div>
 </div>
