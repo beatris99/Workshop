@@ -6,7 +6,7 @@ import { FilterService } from '../services/filter.service';
 import { NoteService } from '../services/note.service';
 
 @Component({
-  selector: 'app-edit-note',
+selector: 'app-edit-note',
   templateUrl: './edit-note.component.html',
   styleUrls: ['./edit-note.component.scss']
 })
@@ -34,9 +34,10 @@ export class EditNoteComponent implements OnInit {
 
 
   updateNote(note: Note)  {
-    this.noteService.updateNote(note);
+    this.noteService.updateNote(note).subscribe(
+      (result: Note) => {
         this.noteService.getNotes();
-     
+      });
       this.router.navigateByUrl("");
   }
 

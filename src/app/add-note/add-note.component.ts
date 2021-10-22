@@ -19,8 +19,10 @@ export class AddNoteComponent implements OnInit {
   
   constructor(private filterService: FilterService, private noteService: NoteService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    
     this.categories=this.filterService.getFilters();
+    
   }
 
   add() {

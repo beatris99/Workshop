@@ -1,68 +1,60 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Note } from '../note/note';
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class NoteService {
 
 
-  notes: Note[] = [
-    {
-    id: "Id1",
-    title: "First note",
-    description: "This is the description for the first note",
-    categoryId: "1"
-  },
-    {
-    id: "Id2",
-    title: "Second note",
-    description: "This is the description for the second note",
-    categoryId: "2"
-    }
-    ];
-  constructor() { }
+  readonly  baseUrl= "https://localhost:4200";
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
+
+  inputSearch: string;
+  constructor(private HttpClient: HttpClient) { }
 
   serviceCall() {
     console.log("Note service was called");
   }
   
-  getNotes() {
-    return this.notes;
+  getNotes(): Observable<Note[]> {
+    return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions);
   }
   getFiltredNotes(categoryId: string){
-    return this.notes.filter(note => note.categoryId === categoryId);
+    return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions).pipe(map((notes) => notes.filter((note) => note.categoryId === categoryId)));
   }
-  getNoteById(id: string)
-  {
-    console.log(id);
-    return this.notes.filter(note => note.categoryId === id);
+  getNoteById(id: string): Observable<Note[]>{
+    
+    return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions).pipe(map((notes) => notes.filter(note => note.id == id)));
   }
   getNoteByDescription(description: string) {
-    console.log(description);
-    return this.notes.filter(
-      note =>  note.description == description);
-  
+    return this.HttpClient.get<Note[]>(this.baseUrl + '/note', this.httpOptions).pipe(map((notes) => notes.filter(note => note.description == description)));
   }
 
   getNoteByTitle(title: string) {
     console.log(this.getNoteByTitle);
-    return this.notes.filter(note => note.title === title);
-    
+    return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions).pipe(map((notes) => notes.filter(el => el.title == title)));
   }
   addNote(noteTitle: string, noteDescription: string, noteCategoryId: string) {
-    let note: Note = {
-      id: "10",
+    const note: Note = {
+      
       description: noteDescription,
       title: noteTitle,
       categoryId: noteCategoryId
     }
-    return this.notes.push(note) ;
+    return this.HttpClient.post(this.baseUrl + '/notes', note, this.httpOptions).subscribe();
   }
   updateNote(note: Note) {
-    return this.notes;
+    return this.HttpClient.put<Note>(this.baseUrl + 'app-edit-note' + note.id, note, this.httpOptions);
   }
 
-  deleteNote(id: number)
+  deleteNote(id: string)
   {
-    return this.notes.splice(id, 1);
+    return this.HttpClient.delete(this.baseUrl + '/note/' + id, this.httpOptions);
   }
 }

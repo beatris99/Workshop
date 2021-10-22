@@ -10,7 +10,7 @@
       <input matInput name="searchTitle" placeholder="Search by Title" id="searchInputTitle">
     </mat-form-field>
     <button><mat-icon (click)="getNoteByTitle()">search</mat-icon></button>
-</form>
+    </form>
 
 <div *ngFor="let note of notes">
     <mat-card class="note">

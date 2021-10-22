@@ -22,7 +22,10 @@ import { EditNoteComponent } from './edit-note/edit-note.component';
 import { NoteService } from './services/note.service';
 import { FilterService } from './services/filter.service';
 import { MatSelectModule } from '@angular/material/select';
-
+import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -51,8 +54,14 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     MatCardModule,
     MatSelectModule,
+    CommonModule,
+    HttpClientModule,
   ],
-  providers: [NoteService, FilterService],
+  providers:[NoteService, FilterService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpMockApiInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

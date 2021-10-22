@@ -13,17 +13,22 @@ export class NoteComponent implements OnInit, OnChanges {
   notes: Note[] = [];
   searchedNote: Note[];
   @Input() selectedCategoryId: string;
-
+  
   constructor(private noteService: NoteService, private router: Router) { }
   
   ngOnInit(): void {
-    this.noteService.serviceCall();
-    this.notes = this.noteService.getNotes();
+    this.noteService.getNotes().subscribe((result) =>{
+    this.notes  = result;
+    });
+   // this.notes = this.noteService.getNotes();
   }
   
   ngOnChanges(): void {
     if (this.selectedCategoryId) {
-      this.notes = this.noteService.getFiltredNotes(this.selectedCategoryId);
+      this.noteService.getFiltredNotes(this.selectedCategoryId).subscribe((result) =>{
+        this.notes  = result;
+        });
+     // this.notes = this.noteService.getFiltredNotes(this.selectedCategoryId);
     }
 
   }
@@ -43,19 +48,26 @@ export class NoteComponent implements OnInit, OnChanges {
     if (indexToBeRemoved != -1) {
       this.notes.splice(indexToBeRemoved, 1);
     }
-    this.notes.splice(1);
+
+    this.noteService.deleteNote(id).subscribe(data => { console.log(data); });
   }
 
-  getNoteByDescription() {
-    
+  getNoteById() {
     const inputElement = <HTMLInputElement>document.getElementById("searchInput");
-    let description: string = "";
+    let id: string = " ";
+    id = inputElement.value;
+    if (id !== " ")
+      this.noteService.getNoteById(id).subscribe((result) => this.notes = result);
+    else
+      this.ngOnInit();
+  }
+  getNoteByDescription() {
+    const inputElement = <HTMLInputElement>document.getElementById("searchInputTitle");
+    let description: string = " ";
     description = inputElement.value;
-    if (description !== "")
-      {
-        this.noteService.getNoteByDescription(description);
-        this.getNotes();
-      }
+    console.log(description);
+    if (description !== " ")
+      this.noteService.getNoteByTitle(description).subscribe((result) => this.notes = result);
     else
       this.ngOnInit();
   }
@@ -66,13 +78,13 @@ export class NoteComponent implements OnInit, OnChanges {
     title = inputElement.value;
     console.log(title);
     if (title !== "")
-      this.noteService.getNoteByTitle(title);
+      this.noteService.getNoteByTitle(title).subscribe((result) => this.notes = result);
     else
       this.ngOnInit();
   }
 
   redirectToEdit(id: string) {
-    this.router.navigate(['edit-note', id]);
+    this.router.navigate(['/app-edit-note', id]);
   }
 
   

@@ -23,7 +23,7 @@ export class NotedetailsComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
 
-      this.noteService.getNoteById(this.id);
+      this.noteService.getNoteById(this.id).subscribe((result) => this.notes = result);
 
       this.previous = + this.id.replace('id', '');
       this.next = + this.id.replace('id', '');
