@@ -61,13 +61,14 @@ export class NoteComponent implements OnInit, OnChanges {
     else
       this.ngOnInit();
   }
+  
   getNoteByDescription() {
     const inputElement = <HTMLInputElement>document.getElementById("searchInputTitle");
     let description: string = " ";
     description = inputElement.value;
     console.log(description);
     if (description !== " ")
-      this.noteService.getNoteByTitle(description).subscribe((result) => this.notes = result);
+      this.noteService.getNoteByDescription(description).subscribe((result) => this.notes = result);
     else
       this.ngOnInit();
   }
@@ -84,7 +85,7 @@ export class NoteComponent implements OnInit, OnChanges {
   }
 
   redirectToEdit(id: string) {
-    this.router.navigate(['/app-edit-note', id]);
+    this.router.navigateByUrl('/app-edit-note/' + id);
   }
 
   

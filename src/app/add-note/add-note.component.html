@@ -14,7 +14,7 @@
    <mat-form-field >
       <mat-label>Choose a category </mat-label>
       <mat-select *ngIf="categories" [(ngModel)]="idCategoryNote" name="categ">
-          <mat-option *ngFor="let categ of categories" [value]="categ">{{categ.name}}</mat-option>
+          <mat-option *ngFor="let categ of categories" [value]="categ.id">{{categ.name}}</mat-option>
       </mat-select>
    </mat-form-field> 
   

@@ -7,7 +7,7 @@ import { NotedetailsComponent } from './notedetails/notedetails.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full'},
-  { path: "app-edit-note", component: EditNoteComponent },
+  { path: "app-edit-note/:id", component: EditNoteComponent },
   { path: "addnote", component: AddNoteComponent},
   { path: "app-notedetails/:id", component: NotedetailsComponent },
   { path: '**', redirectTo: ''}

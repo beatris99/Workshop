@@ -29,10 +29,11 @@
           {{ note.categoryId }}
         </p>
       </mat-card-content>
-      
-     <button><mat-icon>label</mat-icon></button> 
-     <button><mat-icon>verified_user</mat-icon></button> 
-     <button><mat-icon>subdirectory_arrow_right</mat-icon></button> 
+  
+     <mat-icon>label</mat-icon>
+     <mat-icon>verified_user</mat-icon> 
+     <mat-icon>subdirectory_arrow_right</mat-icon> 
+    
      <button><mat-icon (click)="redirectToEdit(note.id)">edit</mat-icon></button>
      <button><mat-icon (click)="deleteNote(note.id)">delete</mat-icon></button>
     </mat-card>

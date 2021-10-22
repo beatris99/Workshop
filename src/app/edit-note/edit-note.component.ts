@@ -27,7 +27,7 @@ export class EditNoteComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       console.log(this.id);
-      this.noteService.getNoteById(this.id);
+      this.noteService.getNoteById(this.id).subscribe((result) => this.note = result);
     });
     this.categories=this.filterService.getFilters();
   }

@@ -39,9 +39,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppHighlightDirective,
     NotedetailsComponent,
     EditNoteComponent,
-    
-   
-  
   ],
   imports: [
     BrowserModule,
