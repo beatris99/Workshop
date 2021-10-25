@@ -1,0 +1,6 @@
+C:\projects\scolarship\NotesApi\WebApplication1\obj\Debug\netcoreapp3.1\NotesApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\scolarship\NotesApi\WebApplication1\obj\Debug\netcoreapp3.1\NotesApi.AssemblyInfoInputs.cache
+C:\projects\scolarship\NotesApi\WebApplication1\obj\Debug\netcoreapp3.1\NotesApi.AssemblyInfo.cs
+C:\projects\scolarship\NotesApi\WebApplication1\obj\Debug\netcoreapp3.1\NotesApi.csproj.CoreCompileInputs.cache
+C:\projects\scolarship\NotesApi\WebApplication1\obj\Debug\netcoreapp3.1\NotesApi.MvcApplicationPartsAssemblyInfo.cs
+C:\projects\scolarship\NotesApi\WebApplication1\obj\Debug\netcoreapp3.1\NotesApi.MvcApplicationPartsAssemblyInfo.cache
