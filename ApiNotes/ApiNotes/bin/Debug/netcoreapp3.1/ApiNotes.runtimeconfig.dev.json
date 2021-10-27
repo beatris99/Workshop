@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\BETIvanca\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\BETIvanca\\.nuget\\packages"
+    ]
+  }
+}

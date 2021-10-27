@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiNotes</name>
+    </assembly>
+    <members>
+        <member name="M:ApiNotes.Controllers.CategoriesController.Get">
+            <summary>
+            Returns a list of categories.
+            </summary>
+            <response code="400">Bad request</response>
+            <returns></returns>
+        </member>
+        <member name="M:ApiNotes.Controllers.CategoriesController.Post(System.String)">
+            <summary>
+            Returns the filter collection.
+            </summary>
+            <response code="400">Bad request</response>
+            <returns></returns>
+        </member>
+        <member name="M:ApiNotes.Controllers.CategoriesController.Delete(System.String)">
+            <summary>
+            Returns the note collection.
+            </summary>
+            <response code="400">Bad request</response>
+            <returns></returns>
+        </member>
+        <member name="M:NotesApi.Controllers.WeatherForecastController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+             <response code="200"> Returns weather</response>
+        </member>
+    </members>
+</doc>
