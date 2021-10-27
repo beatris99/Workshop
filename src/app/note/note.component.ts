@@ -39,17 +39,19 @@ export class NoteComponent implements OnInit, OnChanges {
 
   deleteNote(id: string) {
     console.log(id);
-    let indexToBeRemoved = -1;
-    this.notes.forEach((note, index) => {
-      if (note.id === id) {
-        indexToBeRemoved = index;
-      }
-    })
-    if (indexToBeRemoved != -1) {
-      this.notes.splice(indexToBeRemoved, 1);
-    }
+    // let indexToBeRemoved = -1;
+    // this.notes.forEach((note, index) => {
+    //   if (note.id === id) {
+    //     indexToBeRemoved = index;
+    //   }
+    // })
+    // if (indexToBeRemoved != -1) {
+    //   this.notes.splice(indexToBeRemoved, 1);
+    // }
 
     this.noteService.deleteNote(id).subscribe(data => { console.log(data); });
+    
+    this.ngOnInit();
   }
 
   getNoteById() {
@@ -63,11 +65,11 @@ export class NoteComponent implements OnInit, OnChanges {
   }
   
   getNoteByDescription() {
-    const inputElement = <HTMLInputElement>document.getElementById("searchInputTitle");
+    const inputElement = <HTMLInputElement>document.getElementById("searchInputDescription");
     let description: string = " ";
     description = inputElement.value;
     console.log(description);
-    if (description !== " ")
+    if (description !== "")
       this.noteService.getNoteByDescription(description).subscribe((result) => this.notes = result);
     else
       this.ngOnInit();
@@ -79,7 +81,7 @@ export class NoteComponent implements OnInit, OnChanges {
     title = inputElement.value;
     console.log(title);
     if (title !== "")
-      this.noteService.getNoteByTitle(title).subscribe((result) => this.notes = result);
+       this.noteService.getNoteByTitle(title).subscribe((result) => this.notes = result);
     else
       this.ngOnInit();
   }

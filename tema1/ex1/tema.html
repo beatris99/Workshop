@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="mystyle.css">
+</head>
+<title>
+My first page
+</title>
+
+<h1>
+My first page
+</h1>
+
+<body>
+
+<form action="/action_page.php">
+ <div>
+    <div>
+		<label for="fname" >First name:</label><br>
+		<input type="text" id="fname" name="fname" placeholder="your name..."><br><br>
+	</div>	
+	<div>
+		<label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" placeholder="your last name..."><br><br>
+    </div>
+	<div>
+		<label for="age" >Age:</label><br>
+		<select id="age" >
+				<option label=" "> </option>
+				<option label="18">18</option>
+				<option label="19">19</option>
+				<option label="20">20</option>
+				<option label="21">21</option>
+			</select><br><br>
+    </div>
+    <div>
+		<label for="city" >City:</label><br>
+			<select id="city" >
+				<option label=" "> </option>
+				<option label="Brasov">Brasov</option>
+				<option label="Oradea">Oradea</option>
+				<option label="Timisoara">Timisoara</option>
+				<option label="Bucuresti">Bucuresti</option>
+			</select><br><br>
+    </div>
+	<div>
+		<label for="description">Describe yourself:</label><br>
+		<textarea id="description" name="description" style="height:200px"></textarea><br><br>
+	</div>
+
+<div>
+<button>Cancel</button> 
+<button>Submit</button>
+</div>
+</form>
+
+</body>
+</html>

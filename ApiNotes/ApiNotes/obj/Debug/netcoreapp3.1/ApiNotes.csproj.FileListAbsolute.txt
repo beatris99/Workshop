@@ -25,3 +25,4 @@ C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.dll
 C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.xml
 C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.pdb
 C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.genruntimeconfig.cache
+C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.csproj.AssemblyReference.cache

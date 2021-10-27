@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiNotes.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,12 @@ namespace ApiNotes.Controllers
     public class CategoriesController : ControllerBase
     {
 
-        List<string> myList = new List<string> { "To do", "Done", "Doing" };
-
+        static List<Category> _categories = new List<Category> {
+        new Category {  Id = "1", Name = "To Do" },
+        new Category {  Id = "2", Name = "Done" },
+        new Category {  Id = "3", Name = "Doing" },
+       
+        };
         public CategoriesController() { }
 
         /// <summary>
@@ -34,9 +39,9 @@ namespace ApiNotes.Controllers
         /// <response code="400">Bad request</response>
         /// <returns></returns>
         [HttpGet("")]
-        public IActionResult Get()
+        public IActionResult GetCategory()
         {
-            return Ok(myList);
+            return Ok(_categories);
         }
 
         /// <summary>
@@ -45,10 +50,15 @@ namespace ApiNotes.Controllers
         /// <response code="400">Bad request</response>
         /// <returns></returns>
         [HttpPost("")]
-        public IActionResult Post([FromBody] string bodyContent)
+        public IActionResult Post([FromBody] Category category)
         {
-            myList.Add(bodyContent);
-            return Created(" ",bodyContent);
+            if (category == null)
+            {
+                return BadRequest("Note cannot be null");
+            }
+            _categories.Add(category);
+            return CreatedAtRoute("GetNotes", new { id = category.Id.ToString() }, category);
+            //return Ok();
         }
 
         /// <summary>
@@ -59,8 +69,13 @@ namespace ApiNotes.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            myList.Remove(id);
-            return NoContent();
+
+            if (!id.Any())
+            {
+                return NotFound();
+            }
+          //  _categories.Remove();
+            return Ok();
         }
     }
 }

@@ -25,19 +25,19 @@ export class NoteService {
   getNotes(): Observable<Note[]> {
     return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions);
   }
-  getFiltredNotes(categoryId: string){
+  getFiltredNotes(categoryId: string): Observable<Note[]>{
     return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions).pipe(map((notes) => notes.filter((note) => note.categoryId === categoryId)));
   }
   getNoteById(id: string): Observable<Note[]>{
     
     return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions).pipe(map((notes) => notes.filter(note => note.id == id)));
   }
-  getNoteByDescription(description: string) {
-    return this.HttpClient.get<Note[]>(this.baseUrl + '/note', this.httpOptions).pipe(map((notes) => notes.filter(note => note.description.toLowerCase() == description)));
+  getNoteByDescription(description: string): Observable<Note[]> {
+    return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions).pipe(map((notes) => notes.filter(note => note.description.toLowerCase() == description)));
   }
 
-  getNoteByTitle(title: string) {
-    console.log(this.getNoteByTitle);
+  getNoteByTitle(title: any): Observable<Note[]> {
+    //console.log(this.getNoteByTitle);
     return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions).pipe(map((notes) => notes.filter(note => note.title.toLowerCase() == title)));
   }
   addNote(noteTitle: string, noteDescription: string, noteCategoryId: string) {
