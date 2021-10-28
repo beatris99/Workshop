@@ -14,11 +14,11 @@ namespace ApiNotes.Controllers
     public class OwnerController : ControllerBase
     {
         static List<Owner> _owner = new List<Owner> {
-        new Owner {  Id = new System.Guid("833400e7-30cb-494b-887d-139d7a193451"), Name = "OwnerName1" },
-        new Owner {  Id = new System.Guid("833400e7-30cb-494b-887d-139d7a193451"), Name = "OwnerName2" },
-        new Owner {  Id = new System.Guid(), Name = "OwnerName3" },
-        new Owner {  Id = new System.Guid(), Name = "OwnerName4"},
-        new Owner {  Id = new System.Guid(), Name = "OwnerName5" }
+        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName1" },
+        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName2" },
+        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName3" },
+        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName4"},
+        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName5" }
         };
 
         public OwnerController() { }
@@ -50,5 +50,44 @@ namespace ApiNotes.Controllers
             return Ok(owner);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <response code="400">Bad request</response>
+        /// <returns></returns>
+        [HttpDelete("{idOwner}")]
+        public IActionResult DeleteOwner(Guid idOwner)
+        {
+            var index = _owner.FindIndex(owner => owner.Id == idOwner);
+
+            if (index == -1)
+            {
+                return NotFound();
+            }
+
+            _owner.RemoveAt(index);
+
+            return NoContent();
+        }
+
+        [HttpPatch("{idOwner}")]
+        public IActionResult UpdateOwner(Guid idOwner, [FromBody] string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return BadRequest("The string cannot be null");
+            }
+
+            var index = _owner.FindIndex(owner => owner.Id == idOwner);
+
+            if (index == -1)
+            {
+                return NotFound();
+            }
+
+            _owner[index].Name = name;
+
+            return Ok(_owner[index]);
+        }
     }
 }
