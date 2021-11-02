@@ -13,6 +13,11 @@ namespace NotesApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        //Tema de la cursul 2
+        // 1.Decât status code-urile pe care le poate returna acel get (200, 500…)
+        // 2.Nu e nevoie de atributul de get pentru fiecare ProducessResponseType in parte
+
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"

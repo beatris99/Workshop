@@ -34,11 +34,17 @@ export class EditNoteComponent implements OnInit {
 
 
   updateNote(note: Note)  {
-    this.noteService.updateNote(note).subscribe(
-      (result: Note) => {
-        this.noteService.getNotes();
-      });
-      this.router.navigateByUrl("");
+
+    //console.log(this.idCategoryNote);
+    note.categoryId = this.idCategoryNote;
+    this.noteService.updateNote(note).subscribe(() => this.router.navigateByUrl(''));
   }
+ // updateNote(note: Note) {
+ //   this.noteService.updateNote(note).subscribe(
+ //     (result: Note) => {
+ //       this.noteService.getNotes();
+ //     });
+ //     this.router.navigateByUrl("");
+// }
 
 }

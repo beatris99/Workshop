@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
 export class NoteService {
 
 
-  readonly  baseUrl= "https://localhost:4200";
+  readonly  baseUrl= "https://localhost:5001";
   readonly httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -40,21 +40,23 @@ export class NoteService {
     //console.log(this.getNoteByTitle);
     return this.HttpClient.get<Note[]>(this.baseUrl + '/notes', this.httpOptions).pipe(map((notes) => notes.filter(note => note.title.toLowerCase() == title)));
   }
-  addNote(noteTitle: string, noteDescription: string, noteCategoryId: string) {
+
+  addNote(noteTitle: string, noteDescription: string, noteCategoryId: string): Observable<Note> {
     const note: Note = {
       
       description: noteDescription,
       title: noteTitle,
       categoryId: noteCategoryId
     }
-    return this.HttpClient.post(this.baseUrl + '/notes', note, this.httpOptions);
+    return this.HttpClient.post<Note>(this.baseUrl + '/notes', note);
   }
-  updateNote(note: Note) {
-    return this.HttpClient.put<Note>(this.baseUrl + '/app-edit-note' + note.id, note, this.httpOptions);
+
+  updateNote(note: Note): Observable<Note>  {
+    return this.HttpClient.put<Note>(this.baseUrl + '/notes/' + note.id, note);
   }
 
   deleteNote(id: string)
   {
-    return this.HttpClient.delete(this.baseUrl + '/note/' + id, this.httpOptions);
+    return this.HttpClient.delete(this.baseUrl + '/notes/' + id);
   }
 }

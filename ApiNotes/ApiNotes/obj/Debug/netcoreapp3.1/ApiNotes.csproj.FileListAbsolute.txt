@@ -24,6 +24,7 @@ C:\projects\scolarship\ApiNotes\ApiNotes\bin\Debug\netcoreapp3.1\runtimes\win\na
 C:\projects\scolarship\ApiNotes\ApiNotes\bin\Debug\netcoreapp3.1\runtimes\linux\native\libmongocrypt.so
 C:\projects\scolarship\ApiNotes\ApiNotes\bin\Debug\netcoreapp3.1\runtimes\osx\native\libmongocrypt.dylib
 C:\projects\scolarship\ApiNotes\ApiNotes\bin\Debug\netcoreapp3.1\runtimes\win\native\mongocrypt.dll
+C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.csproj.AssemblyReference.cache
 C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.GeneratedMSBuildEditorConfig.editorconfig
 C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.AssemblyInfoInputs.cache
 C:\projects\scolarship\ApiNotes\ApiNotes\obj\Debug\netcoreapp3.1\ApiNotes.AssemblyInfo.cs

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApiNotes.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class NotesController : ControllerBase
     {
 
@@ -52,7 +52,7 @@ namespace ApiNotes.Controllers
                 return BadRequest();
             }
 
-            var note =await _noteCollectionService.Get(id);
+            var note = await _noteCollectionService.Get(id);
 
             if (note == null)
             {
@@ -69,7 +69,7 @@ namespace ApiNotes.Controllers
             {
                 return BadRequest();
             }
-            var note = _noteCollectionService.Get(idNote);
+            var note = await _noteCollectionService.Get(idNote);
 
             if (note == null)
             {
@@ -103,6 +103,10 @@ namespace ApiNotes.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNote(Guid id)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
             bool removed = await _noteCollectionService.Delete(id);
 
             if (removed)

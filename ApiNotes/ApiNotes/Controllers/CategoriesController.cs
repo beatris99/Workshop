@@ -15,8 +15,7 @@ namespace ApiNotes.Controllers
         static List<Category> _categories = new List<Category> {
         new Category {  Id = "1", Name = "To Do" },
         new Category {  Id = "2", Name = "Done" },
-        new Category {  Id = "3", Name = "Doing" },
-       
+        new Category {  Id = "3", Name = "Doing" }
         };
         public CategoriesController() { }
 
@@ -38,7 +37,7 @@ namespace ApiNotes.Controllers
         /// </summary>
         /// <response code="400">Bad request</response>
         /// <returns></returns>
-        [HttpGet("")]
+        [HttpGet()]
         public IActionResult GetCategory()
         {
             return Ok(_categories);
@@ -54,11 +53,11 @@ namespace ApiNotes.Controllers
         {
             if (category == null)
             {
-                return BadRequest("Note cannot be null");
+                return BadRequest("Category cannot be null");
             }
             _categories.Add(category);
             return CreatedAtRoute("GetNotes", new { id = category.Id.ToString() }, category);
-            //return Ok();
+
         }
 
         /// <summary>
@@ -70,11 +69,11 @@ namespace ApiNotes.Controllers
         public IActionResult Delete(string id)
         {
 
-            if (!id.Any())
+            if (string.IsNullOrWhiteSpace(id))
             {
-                return NotFound();
+                return BadRequest();
             }
-          //  _categories.Remove();
+
             return Ok();
         }
     }

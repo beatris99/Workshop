@@ -10,7 +10,7 @@ namespace ApiNotes.Services
 {
     public class NoteCollectionService : INoteCollectionService
     {
-       
+
         private readonly IMongoCollection<Note> _notes;
 
         public NoteCollectionService(IMongoDBSettings settings)
@@ -62,6 +62,7 @@ namespace ApiNotes.Services
             return true;
         }
 
+        // Asta cred ca ar trebui folosit undeva prin controller
         public async Task<List<Note>> GetNotesByOwnerId(Guid ownerId)
         {
             return (await _notes.FindAsync(note => note.OwnerId == ownerId)).ToList();

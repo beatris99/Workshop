@@ -41,12 +41,20 @@ namespace ApiNotes
             services.AddTransient<IOwnerCollectionService, OwnerCollectionService>();
             services.Configure<MongoDBSettings>(Configuration.GetSection(nameof(MongoDBSettings)));
             services.AddSingleton<IMongoDBSettings>(sp => sp.GetRequiredService<IOptions<MongoDBSettings>>().Value);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("CorsPolicy");
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>

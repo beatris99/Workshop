@@ -17,9 +17,7 @@ export class NoteComponent implements OnInit, OnChanges {
   constructor(private noteService: NoteService, private router: Router) { }
   
   ngOnInit(): void {
-    this.noteService.getNotes().subscribe((result) =>{
-    this.notes  = result;
-    });
+    return this.getNotes();
    // this.notes = this.noteService.getNotes();
   }
   
@@ -34,24 +32,18 @@ export class NoteComponent implements OnInit, OnChanges {
   }
 
   getNotes(){
-    return this.notes;
+    this.noteService.getNotes().subscribe((result) =>{
+      this.notes  = result;
+      });
+   
   }
 
   deleteNote(id: string) {
     console.log(id);
-    // let indexToBeRemoved = -1;
-    // this.notes.forEach((note, index) => {
-    //   if (note.id === id) {
-    //     indexToBeRemoved = index;
-    //   }
-    // })
-    // if (indexToBeRemoved != -1) {
-    //   this.notes.splice(indexToBeRemoved, 1);
-    // }
-
-    this.noteService.deleteNote(id).subscribe(data => { console.log(data); });
     
-    this.ngOnInit();
+    this.noteService.deleteNote(id).subscribe(() =>this.getNotes());
+    
+   // this.ngOnInit();
   }
 
   getNoteById() {
@@ -77,7 +69,7 @@ export class NoteComponent implements OnInit, OnChanges {
 
   getNoteByTitle() {
     const inputElement = <HTMLInputElement>document.getElementById("searchInputTitle");
-    let title: string = "";
+    let title: any = "";
     title = inputElement.value;
     console.log(title);
     if (title !== "")

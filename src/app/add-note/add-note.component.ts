@@ -26,8 +26,7 @@ export class AddNoteComponent implements OnInit {
   }
 
   add() {
-   this.noteService.addNote(this.title, this.description, this.idCategoryNote).subscribe(result => {console.log(result)});
-    this.router.navigateByUrl('');
+    this.noteService.addNote(this.title, this.description, this.idCategoryNote).subscribe(() => this.router.navigateByUrl(''));
   }
 }
 

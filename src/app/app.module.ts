@@ -54,11 +54,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule,
   ],
-  providers:[NoteService, FilterService,{
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpMockApiInterceptor,
-    multi: true
-  }],
+  providers:[
+    NoteService, FilterService
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
