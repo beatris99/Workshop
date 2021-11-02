@@ -25,35 +25,6 @@
             <response code="400">Bad request</response>
             <returns></returns>
         </member>
-        <member name="M:ApiNotes.Controllers.NotesController.DeleteNoteByIdAndOwnerId(System.Guid,System.Guid)">
-            <summary>
-            Delete note based on OwnerId and note id.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:ApiNotes.Controllers.NotesController.DeleteOwnerId(System.Guid)">
-            <summary>
-            Delete all notes of a given OwnerId.
-            </summary>
-            <param name="ownerId"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ApiNotes.Controllers.NotesController.UpdateTitleByIdAndOwnerId(System.Guid,System.Guid,System.String)">
-            <summary>
-            Update note based on OwnerId and note id. (find resource based on Id and OwnerId)
-            </summary>
-            <param name="noteId"></param>
-            <param name="ownerId"></param>
-            <param name="title"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ApiNotes.Controllers.OwnerController.DeleteOwner(System.Guid)">
-            <summary>
-            
-            </summary>
-            <response code="400">Bad request</response>
-            <returns></returns>
-        </member>
         <member name="M:NotesApi.Controllers.WeatherForecastController.Get">
             <summary>
             

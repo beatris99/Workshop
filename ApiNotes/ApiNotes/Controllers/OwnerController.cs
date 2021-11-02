@@ -1,93 +1,96 @@
-﻿using ApiNotes.Models;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
+﻿//using ApiNotes.Models;
+//using ApiNotes.Services;
+//using Microsoft.AspNetCore.Components;
+//using Microsoft.AspNetCore.Mvc;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
+//using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
-namespace ApiNotes.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
-    public class OwnerController : ControllerBase
-    {
-        static List<Owner> _owner = new List<Owner> {
-        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName1" },
-        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName2" },
-        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName3" },
-        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName4"},
-        new Owner {  Id = Guid.NewGuid(), Name = "OwnerName5" }
-        };
+//namespace ApiNotes.Controllers
+//{
+//    [ApiController]
+//    [Route("api/[controller]")]
+//    public class OwnerController : ControllerBase
+//    {
+//        IOwnerCollectionService _ownerCollectionService;
 
-        public OwnerController() { }
+//        public OwnerController(IOwnerCollectionService ownerCollectionService)
+//        {
+//            _ownerCollectionService = ownerCollectionService;
+//        }
 
-        [HttpGet("/owner")]
-        
-        public IActionResult GetOwner()
-        {
-            return Ok(_owner);
-        }
+//        //[HttpGet]
 
-        [HttpPost("/owner")]
-        public IActionResult CreateOwner([FromBody] Owner owner)
-        {
-            if (owner == null)
-            {
-                return BadRequest("Owner cannot be null");
-            }
-            _owner.Add(owner);
+//        //public async Task<IActionResult> GetOwner()
+//        //{
 
-            return CreatedAtRoute("GetOwner", new {idOwner = owner.Id }, owner);
-        }
+//        //    List<Owner> owner = await _ownerCollectionService.GetAll();
+//        //    return Ok(owner);
+//        //}
 
-        [HttpGet("owner/{idOwner}", Name = "GetOwner")]
-        public IActionResult GetByOwnerId(Guid idOwner)
-        {
+//        [HttpPost]
+//        public async Task<IActionResult> CreateOwner([FromBody] Owner owner)
+//        {
+//            if (owner == null)
+//            {
+//                return BadRequest("Note cannot be null");
+//            }
 
-            List<Owner> owner = _owner.FindAll(owner => owner.Id == idOwner);
-            return Ok(owner);
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <response code="400">Bad request</response>
-        /// <returns></returns>
-        [HttpDelete("{idOwner}")]
-        public IActionResult DeleteOwner(Guid idOwner)
-        {
-            var index = _owner.FindIndex(owner => owner.Id == idOwner);
+//            if (await _ownerCollectionService.Create(owner))
+//            {
+//                return CreatedAtRoute("GetByOwnerId", new { id = owner.Id.ToString() }, owner);
+//            }
+//            return NoContent();
+//        }
 
-            if (index == -1)
-            {
-                return NotFound();
-            }
+//        [HttpGet("ownerId/{id}")]
+//        public async Task<IActionResult> GetOwnerId(Guid id)
+//        {
+//            if (id == null)
+//            {
+//                return BadRequest();
+//            }
 
-            _owner.RemoveAt(index);
+//            var owner = await _ownerCollectionService.Get(id);
 
-            return NoContent();
-        }
+//            if (owner == null)
+//            {
+//                return NotFound();
+//            }
+//            return Ok(owner);
 
-        [HttpPatch("{idOwner}")]
-        public IActionResult UpdateOwner(Guid idOwner, [FromBody] string name)
-        {
-            if (string.IsNullOrEmpty(name))
-            {
-                return BadRequest("The string cannot be null");
-            }
+//        }
 
-            var index = _owner.FindIndex(owner => owner.Id == idOwner);
+//        [HttpDelete("{id}")]
+//        public async Task<IActionResult> DeleteOwner(Guid id)
+//        {
+//            bool removed = await _ownerCollectionService.Delete(id);
 
-            if (index == -1)
-            {
-                return NotFound();
-            }
+//            if (removed)
+//            {
+//                return NoContent();
+//            }
 
-            _owner[index].Name = name;
+//            return NotFound();
+//        }
 
-            return Ok(_owner[index]);
-        }
-    }
-}
+//        [HttpPut("{id}")]
+//        public async Task<IActionResult> UpdateOwner(Guid id, [FromBody] Owner ownerToUpdate)
+//        {
+//            if (ownerToUpdate == null)
+//            {
+//                return BadRequest("Note cannot be null");
+//            }
+
+//            if (await _ownerCollectionService.Update(id, ownerToUpdate))
+//            {
+//                return NoContent();
+//            }
+
+//            return BadRequest();
+//        }
+//    }
+//}
